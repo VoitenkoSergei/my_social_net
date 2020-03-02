@@ -1,0 +1,23 @@
+.main_header{
+    grid-area: header;
+    display: flex;
+    justify-content: left;
+    background-color: rgba(255, 255, 255, 0.95);
+    text-align: center;
+    margin-bottom: 10px;
+    .img_logo{
+        width: 40px;
+        padding-left: 10px;
+        padding-top: 5px;
+        img{
+            width: 100%;
+        }
+    }
+    h1{
+        width: 100%;
+        text-transform: uppercase;
+        margin: 5px 0;
+    }
+}
+
+

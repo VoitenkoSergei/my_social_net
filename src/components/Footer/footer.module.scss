@@ -1,0 +1,12 @@
+$color_footer : #3b3b3b;
+.main_footer{
+    grid-area: footer;
+    background-color: rgba(255, 255, 255, 0.95);;
+    text-align: center;
+    margin-top: 10px;
+    h4{
+        margin: 15px;
+        color: $color_footer;
+        text-transform: uppercase;
+    }
+}

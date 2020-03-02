@@ -1,0 +1,18 @@
+.user_list{
+    display: flex;
+    justify-content: flex-start;
+    padding: 10px;
+    .avatar_img{
+        width: 150px;
+        border: 1px solid #d0d0d0;
+        img{
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+    }
+    .user_description{
+        padding: 0 25px;
+        color: gray;
+    }
+}

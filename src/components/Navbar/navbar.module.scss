@@ -1,0 +1,29 @@
+.navbar{
+    grid-area: side;
+    background-color: rgba(255, 255, 255, 0.95);;
+    .list_item{
+        list-style-type: none;
+        margin: 10px 10px 0 10px;
+        li{
+            padding: 10px 0;
+            a{
+                text-transform: uppercase;
+                text-decoration: none;
+                color: #484848;
+            }
+            a:active{
+                color: #2c2c2c;
+            }
+        }
+        .friends{
+            margin-top: 50px;
+        }
+        .active{
+            color: #000000;
+            font-weight: bold;
+            margin-left: -10px;
+            transition: 0.45s;
+        }
+    }
+}
+
