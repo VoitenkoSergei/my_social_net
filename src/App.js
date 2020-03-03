@@ -4,35 +4,25 @@ import Header from './components/Header/header';
 import Navbar from './components/Navbar/navbar';
 import Profile from './components/Profile/profile';
 import Footer from './components/Footer/footer';
-import Messages from './components/Pages/messages/massages';
 import Music from './components/Pages/music/music';
 import Settings from './components/Pages/settings/settings';
 import News from './components/Pages/news/news';
 import { BrowserRouter, Route } from 'react-router-dom';
+import MessagesContainer from './components/Pages/messages/massagesContainer';
 
 
-function App({ state, dispatch }) {
+function App({ store }) {
   return (
     <BrowserRouter>
       <div className="App app-wrapper">
         <Header />
-        <Navbar state={state.sidebar} />
+        <Navbar store={store} />
         <div className="content-wrapper">
           <Route exact path="/"
-            render={() => (
-              <Profile
-                state={state.profilePage}
-                dispatch={dispatch}
-              />
-            )}
+            render={() => (<Profile store={store}/>)}
           />
           <Route path="/messages"
-            render={() => (
-              <Messages
-                state={state.messagePage}
-                dispatch={dispatch}
-              />
-            )}
+            render={() => (<MessagesContainer store={store}/>)}
           />
           <Route path="/news" component={News} />
           <Route path="/music" component={Music} />

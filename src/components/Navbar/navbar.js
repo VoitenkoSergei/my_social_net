@@ -3,7 +3,7 @@ import classes from './navbar.module.scss'
 import { NavLink } from 'react-router-dom'
 import Sidebar from './Sidebar/sidebar'
 
-const Navbar = ({state}) => {
+const Navbar = ({store}) => {
     return (
         <div className={classes.navbar}>
             <ul className={classes.list_item}>
@@ -14,7 +14,7 @@ const Navbar = ({state}) => {
                 <li><NavLink to="/settings" activeClassName={classes.active}>Settings</NavLink></li>
                 <li className={classes.friends}><NavLink to="/friends" activeClassName={classes.active}>Friends</NavLink></li>
             </ul>
-            <Sidebar state={state}/>
+            <Sidebar store={store}/>
         </div>
     )
 }

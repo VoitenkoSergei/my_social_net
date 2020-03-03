@@ -1,23 +1,22 @@
-import React, { createRef } from 'react'
+import React from 'react'
 import classes from './messages.module.scss'
 import Dialog from './Dialog/dialog'
 import ListItems from './ListItems/listItems'
 import { Route } from 'react-router-dom'
-import { addMessageActionCreator, changeMessageActionCreator } from './../../../States/state';
 
-const Messages = ({ state, dispatch }) => {
-    const newMessage = createRef()
+const Messages = ( props ) => {
+    const onSendMessage = () => props.currentMessage() 
 
-    const sendMessage = () => dispatch( addMessageActionCreator() )
+    const onAddCurrentValue = e => props.currentValue( e.target.value )
 
-    const curentMessage = () => dispatch( changeMessageActionCreator( newMessage.current.value ))
+    const nameElements = props.dialogs
+        .map((item, index) => 
+        <ListItems key={index} state={item} />)
 
-    const nameElements = state.dialogs
-        .map((item, index) => <ListItems key={index} state={item} />)
-
-    const messageElements = state.messages
-        .map((item, index) => <Route key={index} path="/messages/4"
-            render={() => <Dialog state={item} />}
+    const messageElements = props.messages
+        .map((item, index) => 
+        <Route key={index} path="/messages/4"
+            render={ () => <Dialog state={item} /> }
         />)
 
     return (
@@ -38,13 +37,12 @@ const Messages = ({ state, dispatch }) => {
                         cols="30"
                         rows="15"
                         placeholder="Write message..."
-                        ref={newMessage}
-                        value={state.currentMessage}
-                        onChange={curentMessage}
+                        value={props.value}
+                        onChange={onAddCurrentValue}
                     />
 
                     <div className={classes.btn_send}>
-                        <button onClick={sendMessage}>Send</button>
+                        <button onClick={onSendMessage}>Send</button>
                     </div>
                 </div>
             </div>

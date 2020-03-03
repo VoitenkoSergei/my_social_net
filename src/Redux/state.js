@@ -1,7 +1,6 @@
-const ADD_POST = "ADD_POST"
-const CHANGE_POST = "CHANGE-POST"
-const ADD_MESSAGE = "ADD-MESSAGE"
-const CHANGE_MESSAGE = "CHANGE-MESSAGE"
+/*import profilePageReducer from "./profilePageReducer"
+import messagePageReducer from "./messagePageReducer"
+import sidebarReducer from "./sidebarReducer"
 
 const store = {
     _state: {
@@ -61,50 +60,14 @@ const store = {
         this._callSubscriber = observer
     },
     dispatch(action) {
-        debugger
-        if (action.type === ADD_POST) {
-            const post = {
-                url: "https://www.economicusgame.com/storage/testimonials/186344/ecd5f29ff548715dc855639ffecfdfb7.png",
-                text: this._state.profilePage.currentValue
-            }
-            this._state.profilePage.currentValue.trim() && this._state.profilePage.posts.push(post)
-            this._state.profilePage.currentValue = ''
-            this._callSubscriber()
-        }
-        if (action.type === CHANGE_POST) {
-            this._state.profilePage.currentValue = action.value
-            this._callSubscriber()
-        }
-        if (action.type === ADD_MESSAGE) {
-            const newMessage = {
-                message: this._state.messagePage.currentMessage,
-                self: true
-            }
-            this._state.messagePage.currentMessage.trim() && this._state.messagePage.messages.push(newMessage)
-            this._state.messagePage.currentMessage = ''
-            this._callSubscriber()
-        }
-        if (action.type === CHANGE_MESSAGE) {
-            this._state.messagePage.currentMessage = action.message
-            this._callSubscriber()
-        }
+
+        this._state.profilePage = profilePageReducer(this._state.profilePage, action)
+        this._state.messagePage = messagePageReducer(this._state.messagePage, action)
+        this._state.sidebar = sidebarReducer(this._state.sidebar, action)
+
+        this._callSubscriber()
+
     }
 }
 
-export const addPostActionCreator = () => ({
-    type: ADD_POST
-})
-export const changePostActionCreator = currentValue => ({
-    type: CHANGE_POST,
-    value: currentValue
-})
-export const addMessageActionCreator = () => ({
-    type: ADD_MESSAGE
-})
-
-export const changeMessageActionCreator = (curentValue) => ({
-    type: CHANGE_MESSAGE,
-    message: curentValue
-})
-
-export default store
+export default store*/

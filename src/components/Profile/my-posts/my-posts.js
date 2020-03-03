@@ -1,16 +1,13 @@
-import React, { createRef } from 'react'
+import React from 'react'
 import classes from './my-posts.module.scss'
 import Post from './post/post'
-import { addPostActionCreator, changePostActionCreator } from '../../../States/state';
 
-const MyPosts = ({ state, dispatch }) => {
-    const newPost = createRef();
+const MyPosts = (props) => {
+    const onAddNewPost = () => props.currentPost()
 
-    const addNewPost = () => dispatch(addPostActionCreator())
+    const onAddCurrentValue = e => props.currentValue( e.target.value )
 
-    const addCurrentValue = () => dispatch(changePostActionCreator(newPost.current.value))
-
-    const postsElements = state.posts
+    const postsElements = props.posts
         .map((item, index) => <Post key={index} url={item.url} text={item.text} />)
 
     return (
@@ -23,12 +20,11 @@ const MyPosts = ({ state, dispatch }) => {
                     cols="30"
                     rows="15"
                     placeholder="you news..."
-                    ref={newPost}
-                    value={state.currentValue}
-                    onChange={addCurrentValue} />
+                    value={props.value}
+                    onChange={onAddCurrentValue} />
 
                 <div className={classes.btn_post}>
-                    <button onClick={addNewPost}>Post</button>
+                    <button onClick={onAddNewPost}>Post</button>
                 </div>
 
             </div>

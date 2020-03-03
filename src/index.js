@@ -1,16 +1,10 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
 import App from './App'
-import store from './States/state'
+import store from './Redux/redux-store'
 
 const renderApp = () => {
-    ReactDOM.render(
-        <App
-            state={store.getState()}
-            dispatch={store.dispatch.bind(store)}
-        />,
-        document.getElementById('root')
-    )
+    ReactDOM.render(<App store={store}/>,document.getElementById('root'))
 }
 renderApp()
 
