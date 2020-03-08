@@ -2,11 +2,9 @@ import React from 'react'
 import classes from './sidebar.module.scss'
 import Friend from './Friends/friend'
 
-const Sidebar = ({ store }) => {
-    const state = store.getState()
+const Sidebar = ({ friends }) => {
     
-    const friendsItem = state.sidebar.friends
-        .map((item, index) => <Friend key={index} state={item} />)
+    const friendsItem = friends.map((item, index) => <Friend key={index} state={item} />)
 
     return (
         <div className={classes.sidebar}>

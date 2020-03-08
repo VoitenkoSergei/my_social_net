@@ -24,16 +24,23 @@ const initialState = {
 const messagePageReducer = (state = initialState, action) => {
     switch (action.type) {
         case ADD_MESSAGE:
-            const newMessage = {
-                message: state.currentMessage,
-                self: true
+            if (state.currentMessage.trim()) {
+                const newMessage = {
+                    message: state.currentMessage,
+                    self: true
+                }
+                return {
+                    ...state,
+                    messages: [...state.messages, newMessage],
+                    currentMessage: ''
+                }
             }
-            state.currentMessage.trim() && state.messages.push(newMessage)
-            state.currentMessage = ''
-            return state
+            else return state
         case CHANGE_MESSAGE:
-            state.currentMessage = action.message
-            return state
+            return {
+                ...state,
+                currentMessage: action.message
+            }
         default:
             return state
     }

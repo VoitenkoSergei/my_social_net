@@ -9,20 +9,21 @@ import Settings from './components/Pages/settings/settings';
 import News from './components/Pages/news/news';
 import { BrowserRouter, Route } from 'react-router-dom';
 import MessagesContainer from './components/Pages/messages/massagesContainer';
+import UsersContainer from './components/Pages/users/usersContainer';
 
 
-function App({ store }) {
+function App() {
   return (
     <BrowserRouter>
       <div className="App app-wrapper">
         <Header />
-        <Navbar store={store} />
+        <Navbar />
         <div className="content-wrapper">
-          <Route exact path="/"
-            render={() => (<Profile store={store}/>)}
+          <Route exact path="/" render={() => <Profile />}
           />
-          <Route path="/messages"
-            render={() => (<MessagesContainer store={store}/>)}
+          <Route path="/messages" render={() => <MessagesContainer />}
+          />
+          <Route path="/users" render={() => <UsersContainer />}
           />
           <Route path="/news" component={News} />
           <Route path="/music" component={Music} />

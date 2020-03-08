@@ -24,18 +24,22 @@ const initialState = {
 }
 
 const profilePageReducer = (state = initialState, action) => {
-    switch(action.type){
+    switch (action.type) {
         case ADD_POST:
-            const post = {
-                url: "https://www.economicusgame.com/storage/testimonials/186344/ecd5f29ff548715dc855639ffecfdfb7.png",
-                text: state.currentValue
+            if (state.currentValue.trim()) {
+                const post = {
+                    url: "https://www.economicusgame.com/storage/testimonials/186344/ecd5f29ff548715dc855639ffecfdfb7.png",
+                    text: state.currentValue
+                }
+                return {
+                    ...state,
+                    posts: [...state.posts, post],
+                    currentValue: ''
+                }
             }
-            state.currentValue.trim() && state.posts.push(post)
-            state.currentValue = ''
-            return state
+            else return state
         case CHANGE_POST:
-            state.currentValue = action.value
-            return state
+            return { ...state, currentValue: action.value }
         default:
             return state
     }
